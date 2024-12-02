@@ -54,6 +54,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
+import { AdminDataComponent } from './pages/admin-data/admin-data.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +88,7 @@ import { environment } from 'src/environments/environment';
     LoaderComponent,
     AddReviewComponent,
     SkeletonLoaderComponent,
+    AdminDataComponent,
   ],
   imports: [
     FormsModule,

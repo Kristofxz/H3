@@ -30,6 +30,7 @@ async function getById(userId: string) {
       }
 }
 
+
 async function getByUsername(username: string) {
       try {
             const collection = await dbService.getCollection('user')
@@ -65,6 +66,7 @@ async function add(user: User) {
             throw err
       }
 }
+
 
 export const userService = {
       query,

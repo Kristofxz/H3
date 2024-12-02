@@ -60,10 +60,21 @@ async function updateStay(req: Request, res: Response) {
             res.status(500).send({ err: 'Failed to update stay' })
       }
 }
+async function getAllStays(req: Request, res: Response) {
+      try {
+          const stays = await stayService.query({}, 0); // Üres szűrő, első oldal
+          res.send(stays);
+      } catch (err) {
+          logger.error('Failed to get all stays', err);
+          res.status(500).send({ err: 'Failed to get all stays' });
+      }
+}
+  
 
 
 
 export const stayController = {
+      getAllStays,
       getStays,
       getStaysLength,
       getStayById,

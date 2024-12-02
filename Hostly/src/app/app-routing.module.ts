@@ -11,6 +11,7 @@ import { UserTripsComponent } from './cmps/user-trips/user-trips.component';
 import { UserOrderComponent } from './cmps/user-order/user-order.component';
 import { UserStaysComponent } from './cmps/user-stays/user-stays.component';
 import { UserWishlistComponent } from './cmps/user-wishlist/user-wishlist.component';
+import { AdminDataComponent } from './pages/admin-data/admin-data.component'; 
 const routes: Routes = [
   {
     path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'orders', component: UserOrderComponent },
       { path: 'stays', component: UserStaysComponent },
       { path: 'wishlist', component: UserWishlistComponent },
+      {path: 'admin-data', component: AdminDataComponent,canActivate: [AuthGuard]},
     ]
   },
   { path: 'login', component: LoginComponent },

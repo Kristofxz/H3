@@ -50,6 +50,19 @@ export class StayService {
     return this.httpService.get(this.STAY_URL + stayId, null) as Observable<Stay>
   }
 
+public async getAllStays(): Promise<Stay[]> {
+  try {
+    const stays = await lastValueFrom(
+      this.httpService.get('stay') // Backend végpont hívása
+    ) as Stay[]; // A választ Stay[]-nek értelmezzük
+    return stays;
+  } catch (err) {
+    console.error('Hiba az összes szállás lekérése során:', err);
+    throw err; // Hiba továbbdobása
+  }
+}
+
+
   public save(stay: any) {
     if (stay._id) return lastValueFrom(this.httpService.put(this.STAY_URL, stay))
     return lastValueFrom(this.httpService.post(this.STAY_URL, stay))

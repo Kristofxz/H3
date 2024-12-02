@@ -95,7 +95,6 @@
                         {{'stay.login.required-password-length' | translate}}
                     </div>
                 </div>
-                <button type="button" class="signup-btn demo" (click)="onSignDemo()">Jelentkezz be admin fiokkal</button>
                 <button class="signup-btn" [disabled]="formLogin.pristine || formLogin.invalid">{{'stay.login.sign-in' | translate}}</button>
             </form>
             <p>{{'stay.login.not-member-yet' | translate}} <span class="toggle-btn" (click)="isSignup = true">{{'stay.login.sign-up' | translate}}</span></p>

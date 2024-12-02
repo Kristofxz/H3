@@ -40,9 +40,9 @@ export class PurchaseIndicationComponent implements OnInit {
   }
 
   get getGuests () {
-    let str = this.order?.guests.adults + this.order.guests.children > 0 ? (this.order.guests.adults + this.order.guests.children) + ' guests ' : ''
-    str += this.order?.guests.infants > 0 ? ' ,' + this.order.guests.infants + ' infants ' : ''
-    str += this.order?.guests.pets > 0 ? ' ,' + this.order.guests.pets + ' pets ' : ''
+    let str = this.order?.guests.adults + this.order.guests.children > 0 ? (this.order.guests.adults + this.order.guests.children) + ' vendég ' : ''
+    str += this.order?.guests.infants > 0 ? ' ,' + this.order.guests.infants + ' csecsemő ' : ''
+    str += this.order?.guests.pets > 0 ? ' ,' + this.order.guests.pets + ' állat ' : ''
     return str
   }
 

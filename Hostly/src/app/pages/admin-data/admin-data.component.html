@@ -1,0 +1,30 @@
+<div class="admin-data-container">
+    <h1>Adatok lekérdezése</h1>
+  
+    <!-- Tab váltás felhasználók és szállások között -->
+    <div class="tab-header">
+      <button (click)="viewMode = 'users'" [class.active]="viewMode === 'users'">Felhasználók</button>
+      <button (click)="viewMode = 'stays'" [class.active]="viewMode === 'stays'">Szállások</button>
+    </div>
+  
+    <!-- Felhasználók listája -->
+    <div *ngIf="viewMode === 'users'" class="data-table">
+      <h2>Felhasználók</h2>
+      <ul>
+        <li *ngFor="let user of users">
+          {{ user.fullname }} ({{ user.username }})
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Szállások listája -->
+    <div *ngIf="viewMode === 'stays'" class="data-table">
+      <h2>Szállások</h2>
+      <ul>
+        <li *ngFor="let stay of stays">
+          {{ stay.name }} - {{ stay.location }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

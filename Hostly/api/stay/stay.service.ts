@@ -50,6 +50,17 @@ async function add(stay: Stay) {
         throw err
     }
 }
+async function getAll() {
+    try {
+        const collection = await dbService.getCollection('stay');
+        const stays = await collection.find().toArray(); // Az összes szállás lekérdezése
+        return stays;
+    } catch (err) {
+        logger.error('cannot find stays', err);
+        throw err;
+    }
+}
+
 
 async function update(stay: Stay) {
     try {
@@ -90,4 +101,5 @@ export const stayService = {
     getById,
     add,
     update,
-}
+    getAll, // Új metódus hozzáadása
+};

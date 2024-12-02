@@ -1,9 +1,10 @@
 export interface User {
-    _id: string
-    username: string
-    fullname: string
-    password: string
-    imgUrl: string
-    userMsg: number
-    hostMsg: number
+    _id: string;
+    username: string;
+    fullname: string;
+    password: string;
+    imgUrl: string;
+    userMsg: number;
+    hostMsg: number;
+    isAdmin: boolean;
 }
