@@ -1,0 +1,150 @@
+Tesztesetek:
+
+Bejelentkezés
+
+Pozitív teszteset:
+Cím: Bejelentkezés érvényes hitelesítő adatokkal.
+Lépések:
+Nyisd meg a bejelentkezési oldalt.
+Add meg a helyes felhasználónevet és jelszót.
+Kattints a "Bejelentkezés" gombra.
+Várt eredmény: Sikeres bejelentkezés.
+
+Negatív teszteset:
+Cím: Bejelentkezés helytelen jelszóval.
+Lépések:
+Nyisd meg a bejelentkezési oldalt.
+Add meg egy létező felhasználónevet, de helytelen jelszót.
+Kattints a "Bejelentkezés" gombra.
+Várt eredmény:Sikertelen bejelentkezés.
+
+
+Új felhasználó regisztráció
+
+Pozitív teszteset:
+Cím: Regisztráció érvényes adatokkal.
+Lépések:
+Nyisd meg a regisztrációs oldalt.
+Add meg az összes szükséges adatot (pl. név, e-mail, jelszó).
+Kattints a "Regisztráció" gombra.
+Várt eredmény: A rendszer sikeresen létrehozza a fiókot.
+
+Negatív teszteset:
+Cím: Regisztráció már létező e-mail címmel.
+Lépések:
+Nyisd meg a regisztrációs oldalt.
+Add meg egy már regisztrált e-mail címet.
+Kattints a "Regisztráció" gombra.
+Várt eredmény: Sikertelen regisztráció.
+
+
+Keresés és szűrés
+
+Pozitív teszteset:
+Cím: Keresés helyszín alapján.
+Lépések:
+Nyisd meg a kezdőlapot.
+A keresési mezőbe írd be: „Budapest”.
+Kattints a "Keresés" gombra.
+Várt eredmény: A találatok listázása kizárólag budapesti szállásokat mutat.
+
+Negatív teszteset:
+Cím: Keresés helyszín alapján.
+Lépések:
+Nyisd meg a kezdőlapot.
+A keresési mezőbe írd be: „Budapest”.
+Kattints a "Keresés" gombra.
+Várt eredmény: Nem csak Budapesti szállások jelennek meg.
+
+
+Szállás adatlapja
+
+Pozitív teszteset:
+Cím: Képgaléria működése.
+Lépések:
+Nyisd meg egy szállás adatlapját.
+Kattints a képek közötti navigáció nyilaira.
+Várt eredmény: A képek váltása zökkenőmentesen történik, és minden kép helyesen jelenik meg.
+
+Negatív teszteset:
+Cím: Hiányzó szállásinformációk.
+Lépések:
+Nyisd meg egy szállás adatlapját.
+Várt eredmény: Az adatlap egyes részei nem elérhetők.
+
+
+Foglalási folyamat
+
+Pozitív teszteset:
+Cím: Foglalás érvényes adatokkal.
+Lépések:
+Válassz ki egy szállást.
+Add meg az érkezési és távozási dátumokat.
+Add meg az érvényes fizetési adatokat.
+Kattints a "Foglalás" gombra.
+Várt eredmény: A rendszer sikeresen feldolgozza a foglalást.
+
+Negatív teszteset:
+Cím: Foglalás lejárt bankkártyával.
+Lépések:
+Válassz ki egy szállást.
+Add meg az érkezési és távozási dátumokat.
+Add meg egy lejárt bankkártya adatait.
+Kattints a "Foglalás" gombra.
+Várt eredmény: Sikertelen foglalás.
+
+
+
+Kommunikáció és ügyfélszolgálat
+
+Pozitív teszteset:
+Cím: Üzenetküldés házigazdának.
+Lépések:
+Nyisd meg egy szállás adatlapját.
+Írd be a kérdésedet, majd kattints a "Küldés" gombra.
+Várt eredmény: Az üzenet sikeresen elküldésre kerül.
+
+
+
+Fizetési rendszer
+
+Pozitív teszteset:
+Cím: Fizetés érvényes bankkártyával.
+Lépések:
+Indíts egy foglalást.
+Add meg az érvényes bankkártya adataidat.
+Kattints a "Fizetés" gombra.
+Várt eredmény: A fizetés sikeres.
+
+Negatív teszteset:
+Cím: Sikertelen fizetés hibás kártyaadatokkal.
+Lépések:
+Indíts egy foglalást.
+Add meg helytelen bankkártya adatokat (pl. rossz CVV kód).
+Kattints a "Fizetés" gombra.
+Várt eredmény: sikertelen fizetés.
+
+
+
+Házigazdák funkciói
+
+Pozitív teszteset:
+Cím: Szállás adatainak módosítása.
+Lépések:
+Jelentkezz be házigazdaként.
+Navigálj a „Szállásaim” menüponthoz.
+Válaszd ki a szállást, majd módosítsd az árat.
+Kattints a "Mentés" gombra.
+Várt eredmény: Az adatokat sikeresen frissíti a rendszer, és megjelenik a visszaigazolás.
+
+Negatív teszteset:
+Cím: Szállás regisztrálása hiányos adatokkal.
+Lépések:
+Jelentkezz be házigazdaként.
+Indíts új szállás regisztrációt.
+Hagyd üresen a cím vagy az ár mezőt.
+Kattints a "Mentés" gombra.
+Várt eredmény: A rendszer hibát jelez: „Minden mezőt ki kell tölteni.”
+
+
+
