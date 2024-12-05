@@ -57,7 +57,7 @@
     {
       "name": "api",
       "patterns": [
-        "http:\\/\\/localhost:4200"
+        "http:\\/\\/http://34.65.143.36:4200/"
       ],
       "strategy": "performance",
       "maxSize": 20,
