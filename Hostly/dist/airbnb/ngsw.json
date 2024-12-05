@@ -56,8 +56,8 @@
     {
       "name": "api",
       "patterns": [
-        "http:\\/\\/http://34.65.143.36:4200/"
-      ],
+  "http://34.65.143.36:4200/"
+],
       "strategy": "performance",
       "maxSize": 20,
       "maxAge": 3600000,
