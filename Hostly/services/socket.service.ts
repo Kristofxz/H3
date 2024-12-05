@@ -13,7 +13,7 @@ let gIo: Server<CustomSocket> | null = null
 export function setupSocketAPI(http: HttpServer) {
       gIo = new Server(http, {
             cors: {
-                  origin: ['http://34.65.143.36:4200/', 'http://localhost:4200'],
+                  origin: ['http://34.65.143.36:3030/', 'http://34.65.143.36:4200/'],
             }
       })
       gIo.on('connection', (socket: CustomSocket) => {
