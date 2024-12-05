@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 })
 export class SocketService {
   socket: any
-  readonly uri: string = isDevMode() ? 'http://34.65.143.36:3030' : ''
+  readonly uri: string = isDevMode() ? '//http://34.65.143.36:3030' : ''
 
   constructor() {
     this.socket = io(this.uri)
