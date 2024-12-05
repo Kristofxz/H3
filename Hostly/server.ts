@@ -21,7 +21,11 @@ if (process.env['NODE_ENV'] === 'production') {
   app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
   const corsOptions = {
-    origin: ['http://127.0.0.1:4200', 'http://localhost:4200', 'http://34.65.143.36:4200'], // Allow your IP address
+    origin: [
+      'http://127.0.0.1:4200',
+      'http://localhost:4200',
+      'http://34.65.143.36:4200',  // Ensure frontend app IP is included here
+    ],
     credentials: true
   };
   app.use(cors(corsOptions));
