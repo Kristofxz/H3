@@ -8,7 +8,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  BASE_URL = isDevMode() ? '//localhost:3030/api/' : '/api/'
+  BASE_URL = isDevMode() ? '//http://34.65.143.36/:3030/api/' : '/api/'
   headers = new HttpHeaders({
   'Content-Type': 'application/json',
   'Authorization': 'Bearer <token>',
