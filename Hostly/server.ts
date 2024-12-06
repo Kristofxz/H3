@@ -22,9 +22,8 @@ if (process.env['NODE_ENV'] === 'production') {
 } else {
   const corsOptions = {
     origin: [
-      'http://127.0.0.1:4200',
-      'http://localhost:4200',
-      'http://34.65.143.36:4200',  // Ensure frontend app IP is included here
+      'http://34.65.143.36:4200', // frontend URL-je
+        'http://34.65.143.36',   // Ensure frontend app IP is included here
     ],
     credentials: true
   };
