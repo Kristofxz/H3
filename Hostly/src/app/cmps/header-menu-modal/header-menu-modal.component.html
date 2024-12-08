@@ -6,7 +6,7 @@
         <span [routerLink]="['/user/trips']" (click)="toggleMenuModal()" class="bold">{{'stay.header.trips' | translate}}</span>
         <span [routerLink]="['/user/wishlist']" (click)="toggleMenuModal()" class="bold">{{'stay.header.wishlist' | translate}}</span>
         <!-- Admin számára elérhető menüpont -->
-        <span *ngIf="isAdmin" [routerLink]="['/admin/data-query']" (click)="toggleMenuModal()" class="bold">Adatok lekérdezése</span>
+        <span *ngIf="isAdmin" [routerLink]="['/admin-data']" (click)="toggleMenuModal()" class="bold">Adatok lekérdezése</span>
     </div>
     <span *ngIf="isLoggedInUser()" routerLink="/" class="logout" (click)="onLogout()">{{'stay.header.logout' | translate}}</span>
 </section>
