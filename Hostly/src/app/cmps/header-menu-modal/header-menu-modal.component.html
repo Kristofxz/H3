@@ -5,7 +5,6 @@
     <div *ngIf="isLoggedInUser()">
         <!-- Minden felhasználó számára elérhető gombok -->
         <span [routerLink]="['/user/trips']" (click)="toggleMenuModal()" class="bold">{{'stay.header.trips' | translate}}</span>
-        <a href = '/user/trips'>pppp</a>
         <span [routerLink]="['/user/wishlist']" (click)="toggleMenuModal()" class="bold">{{'stay.header.wishlist' | translate}}</span>
         
         <!-- Csak admin számára elérhető gomb -->
