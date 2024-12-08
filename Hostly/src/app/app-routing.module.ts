@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: 'stays', component: UserStaysComponent },
       { path: 'wishlist', component: UserWishlistComponent },
       {path: 'admin-data', component: AdminDataComponent,canActivate: [AuthGuard]},
+      { path: 'admin/data-query', component: AdminDataComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
