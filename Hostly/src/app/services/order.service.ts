@@ -32,13 +32,13 @@ export class OrderService {
   public async loadOrders() {
     const filterBy = this._orderFilter$.value
     const queryParams = this.getQueryParams(filterBy)
-    const orders = await lastValueFrom(this.httpService.get(this.ORDER_URL + queryParams, null)) as Order[]
+    const orders = await lastValueFrom(this.httpService.get(this.ORDER_URL + queryParams)) as Order[]
     this._orders$.next(orders)
   }
 
   public query(filterBy: FilterOrder | null) {
     const queryParams = this.getQueryParams(filterBy)
-    return this.httpService.get(this.ORDER_URL + queryParams, null) as Observable<Order[]>
+    return this.httpService.get(this.ORDER_URL + queryParams) as Observable<Order[]>
   }
 
   public save(order: Order) {

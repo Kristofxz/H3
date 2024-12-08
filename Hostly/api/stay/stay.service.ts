@@ -31,14 +31,21 @@ async function staysLength(filterBy: StayFilter) {
 
 async function getById(stayId: string) {
     try {
-        const collection = await dbService.getCollection('stay')
-        const stay = collection.findOne({ _id: new ObjectId(stayId) })
-        return stay
+        if (!ObjectId.isValid(stayId)) {
+            throw new Error('Invalid ObjectId');
+        }
+        const collection = await dbService.getCollection('stay');
+        const stay = await collection.findOne({ _id: new ObjectId(stayId) });
+        if (!stay) {
+            throw new Error('Stay not found');
+        }
+        return stay;
     } catch (err) {
-        logger.error(`while finding stay ${stayId}`, err)
-        throw err
+        console.error(`Hiba a stay ID lekérdezésekor: ${stayId}`, err);
+        throw err;
     }
 }
+
 
 async function add(stay: Stay) {
     try {
@@ -53,13 +60,16 @@ async function add(stay: Stay) {
 async function getAll() {
     try {
         const collection = await dbService.getCollection('stay');
-        const stays = await collection.find().toArray(); // Az összes szállás lekérdezése
+        const stays = await collection.find().toArray(); // Minden szállás lekérdezése
+        console.log('Lekért szállások:', stays);
         return stays;
     } catch (err) {
-        logger.error('cannot find stays', err);
+        console.error('Hiba az összes szállás lekérésekor:', err);
         throw err;
     }
 }
+
+
 
 
 async function update(stay: Stay) {

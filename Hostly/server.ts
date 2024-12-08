@@ -8,15 +8,12 @@ import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware';
 
 const app = express();
 
-// Middleware to serve static files
 app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(compression());
-
 const http = require('http').createServer(app);
 
-// CORS configuration for different environments
 if (process.env['NODE_ENV'] === 'production') {
   app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
@@ -43,7 +40,6 @@ app.use('/api/order', orderRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
-// Serve index.html for non-API requests
 app.get('/**', (_: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

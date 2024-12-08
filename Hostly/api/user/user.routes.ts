@@ -5,3 +5,4 @@ export const router = express.Router();
 router.get('/', userController.query); // Felhasználók lekérése
 router.get('/:userId', userController.getUser);
 router.put('/', userController.updateUser);
+router.delete('/:userId', userController.removeUser);

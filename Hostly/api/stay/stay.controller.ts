@@ -62,16 +62,14 @@ async function updateStay(req: Request, res: Response) {
 }
 async function getAllStays(req: Request, res: Response) {
       try {
-          const stays = await stayService.query({}, 0); // Üres szűrő, első oldal
-          res.send(stays);
+          const stays = await stayService.getAll(); // Az összes szállás lekérése
+          res.send(stays); // Egy tömb küldése válaszként
       } catch (err) {
-          logger.error('Failed to get all stays', err);
-          res.status(500).send({ err: 'Failed to get all stays' });
+          console.error('Failed to get all stays', err);
+          res.status(500).send({ err: 'Failed to get stays' });
       }
-}
+  }
   
-
-
 
 export const stayController = {
       getAllStays,

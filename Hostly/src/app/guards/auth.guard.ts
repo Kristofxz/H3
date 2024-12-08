@@ -12,14 +12,20 @@ export class AuthGuard implements CanActivate {
     private userService: UserService,
     private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    const user = this.userService.getUser()
-    if (user) return true
-    else {
-      this.router.navigateByUrl('/')
-      return false
+    canActivate(
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot
+    ): boolean {
+      const user = this.userService.getUser();
+    
+      // Ellenőrizd, hogy a felhasználó admin-e
+      if (user && user.isAdmin) {
+        return true; // Admin jogosultság esetén engedélyezi az útvonalat
+      }
+    
+      // Ha nem admin vagy nincs bejelentkezve, navigáljon a kezdőoldalra
+      this.router.navigateByUrl('/');
+      return false;
     }
-  }
+    
 }

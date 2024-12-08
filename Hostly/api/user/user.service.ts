@@ -67,11 +67,23 @@ async function add(user: User) {
       }
 }
 
+async function remove(userId: string) {
+      try {
+          const collection = await dbService.getCollection('user');
+          const result = await collection.deleteOne({ _id: new ObjectId(userId) });
+          return result.deletedCount > 0; // Sikeres törlés esetén `true`
+      } catch (err) {
+          logger.error(`cannot remove user ${userId}`, err);
+          throw err;
+      }
+  }
+
 
 export const userService = {
       query,
       add,
       update,
       getById,
-      getByUsername
+      getByUsername,
+      remove, // Új metódus hozzáadása
 }

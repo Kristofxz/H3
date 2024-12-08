@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { environment } from '../environments/environment';
 import { StayResolver } from './services/stay.resolver';
 import { StayIndexComponent } from './pages/stay-index/stay-index.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -12,6 +11,7 @@ import { UserOrderComponent } from './cmps/user-order/user-order.component';
 import { UserStaysComponent } from './cmps/user-stays/user-stays.component';
 import { UserWishlistComponent } from './cmps/user-wishlist/user-wishlist.component';
 import { AdminDataComponent } from './pages/admin-data/admin-data.component'; 
+
 const routes: Routes = [
   {
     path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
@@ -21,10 +21,13 @@ const routes: Routes = [
       { path: 'orders', component: UserOrderComponent },
       { path: 'stays', component: UserStaysComponent },
       { path: 'wishlist', component: UserWishlistComponent },
-      { path: 'admin-data', component: AdminDataComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
+  { 
+    path: 'admin-data', // Egyszerűsített útvonal
+    component: AdminDataComponent,
+  },
   {
     path: ':stayId',
     loadChildren: () => import('./lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule),

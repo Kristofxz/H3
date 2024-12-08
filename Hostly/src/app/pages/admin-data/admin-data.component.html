@@ -1,29 +1,34 @@
 <div class="admin-data-container">
-  <h1>Adatok lekérdezése</h1>
+  <!-- Vissza gomb -->
+  <div class="admin-header">
+      <button (click)="navigateToHome()" class="back-button">Vissza</button>
+      <h1>Adatok lekérdezése</h1>
+  </div>
 
-  <!-- Tab for users and stays -->
+  <!-- Tab váltás felhasználók és szállások között -->
   <div class="tab-header">
-    <button (click)="viewMode = 'users'" [class.active]="viewMode === 'users'">Felhasználók</button>
-    <button (click)="viewMode = 'stays'" [class.active]="viewMode === 'stays'">Szállások</button>
+      <button (click)="viewMode = 'users'" [class.active]="viewMode === 'users'">Felhasználók</button>
+      <button (click)="viewMode = 'stays'" [class.active]="viewMode === 'stays'">Szállások</button>
   </div>
 
-  <!-- Users list -->
+  <!-- Felhasználók listája -->
   <div *ngIf="viewMode === 'users'" class="data-table">
-    <h2>Felhasználók</h2>
-    <ul>
-      <li *ngFor="let user of users">
-        {{ user.fullname }} ({{ user.username }})
-      </li>
-    </ul>
+      <h2>Felhasználók</h2>
+      <ul>
+          <li *ngFor="let user of users">
+              {{ user.fullname }} ({{ user.username }})
+              <button (click)="deleteUser(user._id)" class="delete-button">Törlés</button>
+          </li>
+      </ul>
   </div>
 
-  <!-- Stays list -->
-  <div *ngIf="viewMode === 'stays'" class="data-table">
+  <!-- Szállások listája -->
+<div *ngIf="viewMode === 'stays'" class="data-table">
     <h2>Szállások</h2>
     <ul>
-      <li *ngFor="let stay of stays">
-        {{ stay.name }} - {{ stay.location }}
-      </li>
+        <li *ngFor="let stay of stays">
+            {{ stay.name }} ({{ stay.type }})
+        </li>
     </ul>
-  </div>
+</div>
 </div>

@@ -34,8 +34,24 @@ async function updateUser(req: Request, res: Response) {
     }
 }
 
+async function removeUser(req: Request, res: Response) {
+    try {
+        const userId = req.params['userId'];
+        const success = await userService.remove(userId);
+        if (success) {
+            res.send({ message: 'Felhasználó sikeresen törölve.' });
+        } else {
+            res.status(404).send({ message: 'Felhasználó nem található.' });
+        }
+    } catch (err) {
+        logger.error('Failed to delete user', err);
+        res.status(500).send({ err: 'Failed to delete user' });
+    }
+}
+
 export const userController = {
     query,
     getUser,
     updateUser,
+    removeUser, // Új metódus hozzáadása
 };

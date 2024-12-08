@@ -45,18 +45,12 @@ export class UserService {
   hostFunction = this.updateHostMsg.bind(this);
   userFunction = this.updateUserMsg.bind(this);
 
-  /**
-   * Bejelentkezett felhasználó lekérése (sessionből).
-   */
   public getUser(): User {
     return JSON.parse(
       sessionStorage.getItem(this.STORAGE_KEY_LOGGEDIN_USER) as string
     );
   }
 
-  /**
-   * Bejelentkezési metódus, amely a teljes felhasználói adatot (isAdmin-t is) eltárolja.
-   */
   public async login(credentials: User) {
     try {
       const loggedInUser = await lastValueFrom(
@@ -74,7 +68,7 @@ export class UserService {
           this.socketService.SOCKET_EMIT_ORDER_FOR_USER,
           this.userFunction
         );
-        this._user$.next(loggedInUser); // Felhasználói adatot frissítünk
+        this._user$.next(loggedInUser);
       }
 
       return loggedInUser;
@@ -83,9 +77,6 @@ export class UserService {
     }
   }
 
-  /**
-   * Regisztráció metódus, amely az új felhasználót alapértelmezetten `isAdmin: false` státusszal hozza létre.
-   */
   public async signup(user: User) {
     try {
       const newUser = await lastValueFrom(
@@ -97,12 +88,7 @@ export class UserService {
       throw err;
     }
   }
-  
 
-
-  /**
-   * Üres felhasználói objektum.
-   */
   public getEmptyUser() {
     return {
       username: '',
@@ -111,30 +97,32 @@ export class UserService {
       imgUrl: '',
       userMsg: 0,
       hostMsg: 0,
-      isAdmin: false, // Alapértelmezetten nem admin
+      isAdmin: false,
     };
   }
-  /**
- * Felhasználók lekérdezése a backendből.
- */
-/**
- * Felhasználók lekérdezése a backendből.
- */
-public async getAllUsers(): Promise<User[]> {
-  try {
-    const users = await lastValueFrom(
-      this.httpService.get('user') // Backend végpont hívása
-    ) as User[]; // A választ User[]-nek értelmezzük
-    return users;
-  } catch (err) {
-    console.error('Hiba a felhasználók lekérdezése során:', err);
-    throw err; // Hiba továbbdobása
-  }
-}
 
-  /**
-   * Felhasználói adat frissítése.
-   */
+  public async getAllUsers(): Promise<User[]> {
+    try {
+      const users = await lastValueFrom(
+        this.httpService.get(this.USER_URL)
+      ) as User[];
+      return users;
+    } catch (err) {
+      console.error('Hiba a felhasználók lekérdezése során:', err);
+      throw err;
+    }
+  }
+
+  public async deleteUser(userId: string): Promise<void> {
+    try {
+      await lastValueFrom(this.httpService.delete(`${this.USER_URL}${userId}`));
+      console.log(`Felhasználó sikeresen törölve: ${userId}`);
+    } catch (err) {
+      console.error(`Hiba a felhasználó törlése során: ${userId}`, err);
+      throw err;
+    }
+  }
+
   async update(user: User) {
     try {
       if (!user) return;
@@ -175,9 +163,6 @@ public async getAllUsers(): Promise<User[]> {
     }
   }
 
-  /**
-   * Kijelentkezés és session törlése.
-   */
   public async logout() {
     try {
       await lastValueFrom(this.httpService.post(this.AUTH_URL + 'logout'));
@@ -198,9 +183,6 @@ public async getAllUsers(): Promise<User[]> {
     }
   }
 
-  /**
-   * Bejelentkezett felhasználó adatok mentése a sessionStorage-ba.
-   */
   private saveLocalUser(user: User) {
     sessionStorage.setItem(this.STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
     return user;
