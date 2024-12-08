@@ -55,7 +55,7 @@ export class EditStayComponent {
     this.stay.loc.address = address
     this.stay.host = { ...this.stay.host, _id: user._id, pictureUrl: user.imgUrl, fullname: user.fullname }
     if (!this.checkValidation()) return
-    this.stay.loc.address = '${address}, ${city}, ${country}';
+    this.stay.loc.address = `${address}, ${city}, ${country}`;
     try {
       await this.stayService.save(this.stay)
       this.snackBar.open('Szállás sikeresen hozzáadva!', 'Vissza', { duration: 3000 })

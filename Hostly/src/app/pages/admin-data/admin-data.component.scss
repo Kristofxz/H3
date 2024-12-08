@@ -1,25 +1,128 @@
 .admin-data-container {
-    padding: 20px;
-  }
-  
-  .tab-header {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .tab-header button {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .tab-header button.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .data-table {
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Vissza gomb */
+.back-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Középen lévő címsor */
+.admin-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+/* Tab váltás stílus */
+.tab-header {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-header button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #e9ecef;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.tab-header button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.4);
+}
+
+.tab-header button:hover {
+  background-color: #dee2e6;
+}
+
+/* Adatlista táblázatos megjelenítése */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.data-table ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.data-table li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.data-table li:last-child {
+  border-bottom: none;
+}
+
+/* Törlés gomb stílus */
+.delete-button {
+  padding: 5px 15px;
+  font-size: 14px;
+  color: white;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Szállások cím */
+.data-table h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left;
+}

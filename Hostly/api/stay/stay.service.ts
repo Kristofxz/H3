@@ -84,6 +84,15 @@ async function update(stay: Stay) {
         throw err
     }
 }
+async function remove(stayId: string) {
+    try {
+        const collection = await dbService.getCollection('stay');
+        await collection.deleteOne({ _id: new ObjectId(stayId) });
+    } catch (err) {
+        logger.error(`Failed to delete stay ${stayId}, err`);
+        throw err;
+    }
+}
 
 function _buildCriteria(filterBy: StayFilter) {
     const criteria: any = {}
@@ -112,4 +121,5 @@ export const stayService = {
     add,
     update,
     getAll, // Új metódus hozzáadása
+    remove
 };

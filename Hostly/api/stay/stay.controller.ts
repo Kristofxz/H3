@@ -69,6 +69,16 @@ async function getAllStays(req: Request, res: Response) {
           res.status(500).send({ err: 'Failed to get stays' });
       }
   }
+  async function deleteStay(req: Request, res: Response) {
+      try {
+          const stayId = req.params['stayId'];
+          await stayService.remove(stayId);
+          res.send({ message: 'Szállás sikeresen törölve.' });
+      } catch (err) {
+          logger.error('Failed to delete stay', err);
+          res.status(500).send({ err: 'Failed to delete stay' });
+      }
+}
   
 
 export const stayController = {
@@ -78,4 +88,5 @@ export const stayController = {
       getStayById,
       addStay,
       updateStay,
+      deleteStay
 }

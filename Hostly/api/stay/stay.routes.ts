@@ -9,3 +9,4 @@ router.get('/:stayId', stayController.getStayById)
 router.post('/', stayController.addStay)
 router.put('/', requireAuth, stayController.updateStay)
 router.get('/all', stayController.getAllStays);
+router.delete('/:stayId', stayController.deleteStay);
