@@ -50,4 +50,15 @@ export class AdminDataComponent implements OnInit {
       alert('Hiba történt a törlés során.');
     }
   }
+  async deleteStay(stayId: string) {
+    try {
+        await this.stayService.deleteStay(stayId);
+        this.stays = this.stays.filter(stay => stay._id !== stayId); // Lista frissítése
+        console.log('Szállás törölve: ${stayId}');
+        alert('Szállás sikeresen törölve.');
+    } catch (err) {
+        console.error(`Hiba a szállás törlése során: ${stayId}, err`);
+        alert('Hiba történt a törlés során.');
+    }
+  }
 }

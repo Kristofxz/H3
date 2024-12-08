@@ -28,6 +28,7 @@
     <ul>
         <li *ngFor="let stay of stays">
             {{ stay.name }} ({{ stay.type }})
+            <button (click)="deleteStay(stay._id)" class="delete-button">Törlés</button>
         </li>
     </ul>
 </div>

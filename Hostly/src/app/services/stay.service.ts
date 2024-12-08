@@ -89,7 +89,15 @@ export class StayService {
     this.loadFullLength()
     await this.loadStays(0, false)
   }
-
+  public async deleteStay(stayId: string): Promise<void> {
+    try {
+        await lastValueFrom(this.httpService.delete(`${this.STAY_URL}${stayId}`));
+        console.log(`Szállás sikeresen törölve: ${stayId}`);
+    } catch (err) {
+        console.error(`Hiba a szállás törlése során: ${stayId}, err`);
+        throw err;
+    }
+  }
   public getEmptyStay() {
     return {
       name: '',
@@ -157,4 +165,5 @@ export class StayService {
       "txt": ''
     }
   }
+  
 }
