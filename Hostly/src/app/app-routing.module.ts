@@ -14,7 +14,7 @@ import { AdminDataComponent } from './pages/admin-data/admin-data.component';
 
 const routes: Routes = [
   {
-    path: 'user', component: UserComponent, canActivate: [AuthGuard], children: [
+    path: 'user', component: UserComponent, children: [
       { path: 'edit/:id', component: EditStayComponent },
       { path: 'edit', component: EditStayComponent },
       { path: 'trips', component: UserTripsComponent },
