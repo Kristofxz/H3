@@ -8,9 +8,9 @@ import { StayService } from 'src/app/services/stay.service';
   styleUrls: ['./admin-data.component.scss']
 })
 export class AdminDataComponent implements OnInit {
-  viewMode: 'users' | 'stays' = 'users'; // Alapértelmezett nézet: Felhasználók
-  users: any[] = []; // Felhasználók listája
-  stays: any[] = []; // Szállások listája
+  viewMode: 'users' | 'stays' = 'users'; // Default view: Users
+  users: any[] = []; // List of users
+  stays: any[] = []; // List of stays
 
   constructor(
     private userService: UserService,
@@ -19,17 +19,15 @@ export class AdminDataComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      // Felhasználók lekérdezése
+      // Fetch users
       this.users = await this.userService.getAllUsers();
-      console.log('Felhasználók sikeresen betöltve:', this.users);
-  
-      // Szállások lekérdezése
+      console.log('Users loaded:', this.users);
+
+      // Fetch stays
       this.stays = await this.stayService.getAllStays();
-      console.log('Szállások sikeresen betöltve:', this.stays);
+      console.log('Stays loaded:', this.stays);
     } catch (err) {
-      console.error('Hiba az adatok betöltése során:', err);
+      console.error('Error loading data:', err);
     }
   }
-  
-
 }
